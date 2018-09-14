@@ -6,22 +6,39 @@ page-movies {
         position: relative;
         text-align: center;
     }
-    .card-title {
-        // position: absolute;
-        // top: 30%;
-        font-size: 0.9em;
-        width: 100%; // font-weight: bold;
-        color: #ecf0f1;
-        background: transparent;
-    }
     .card {
         background: color($colors, dark);
-    }
-    .card-subtitle {
-        font-size: 1.0em; // position: absolute;
-        // bottom: 10px;
-        width: 100%;
-        color: #ecf0f1;
+        .watched-icon {
+            display: none;
+        }
+        .card-subtitle {
+            font-size: 1.0em;
+            width: 100%;
+            color: #ecf0f1;
+        }
+        .card-title {
+            font-size: 0.9em;
+            width: 100%;
+            color: #ecf0f1;
+            background: transparent;
+        }
+        &.watched {
+            background: color($colors, watched);
+            .watched-icon {
+                display: block;
+                color: color($colors, watched);
+                position: absolute;
+                top: 3px;
+                right: 3px;
+                font-size: 2em;
+            }
+            .card-title {
+                color: color($colors, dark);
+            }
+            .card-subtitle {
+                color: color($colors, dark);
+            }
+        }
     }
     .scroll-content {
         overflow: auto;

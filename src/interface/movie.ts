@@ -25,6 +25,8 @@ export interface Movie {
   vote_average: number;
   vote_count: number;
   videos: Videos;
+// Custom properties
+  watched?: boolean;
 }
 
 interface Videos {

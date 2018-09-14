@@ -10,9 +10,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-
-
-
+import { WatchedMoviesService } from '../../services/watched-movies.service';
 
 /**
  * Add this in order to enable lazy loading
@@ -41,15 +39,16 @@ export class MoviesPage implements OnDestroy {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private movieProvider: MovieProvider
-  ) {}
+    private movieProvider: MovieProvider,
+    private _watchedMoviesService: WatchedMoviesService
+  ) { }
 
   getSelection(selection: string) {
     this.reset();
     this.movieSearch$.next(selection);
   }
 
-  private reset(){
+  private reset() {
     this.page = 0;
     this.movies = [];
     this.endPages = false;
@@ -69,10 +68,10 @@ export class MoviesPage implements OnDestroy {
 
         const searchOpt: boolean =
           search === "now_playing" ||
-          search === "popular" ||
-          search === "top_rated" ||
-          search === "upcoming" ||
-          !!!search
+            search === "popular" ||
+            search === "top_rated" ||
+            // search === "upcoming" ||
+            !!!search
             ? true
             : false;
 
@@ -85,6 +84,16 @@ export class MoviesPage implements OnDestroy {
         }
       })
       .subscribe((movies: Movie[]) => {
+
+
+        // Check if watched movies
+        for (const movie of movies){
+          if(this._watchedMoviesService.checkIfWatched(movie.id)){
+            movie.watched = true;
+          }
+        }
+
+
         this.movies = this.movies.concat(movies);
 
         console.log(this.endPages);
@@ -110,7 +119,7 @@ export class MoviesPage implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(this.subscription){
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }

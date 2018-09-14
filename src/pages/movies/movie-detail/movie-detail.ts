@@ -1,8 +1,8 @@
 import { MovieProvider } from './../../../providers/movie/movie';
 import { Movie } from './../../../interface/movie';
-import { Observable, Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Rx';
 import { Component, OnDestroy } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'movie-detail',
@@ -13,7 +13,6 @@ export class MovieDetailPage implements OnDestroy{
   movie:Movie;
   private movieSub: Subscription;
   constructor(
-    private navCtrl: NavController,
     private navParams: NavParams,
     private movieProvider:MovieProvider
   ) {

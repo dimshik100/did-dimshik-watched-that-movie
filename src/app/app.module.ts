@@ -9,6 +9,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { WatchedMoviesService } from '../services/watched-movies.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    WatchedMoviesService
   ]
 })
 export class AppModule {}
