@@ -9,6 +9,7 @@
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
+    "ionic:build:browser": "ionic build browser",
     "ionic:serve": "ionic-app-scripts serve",
     "ionic-serve-in-browser-dev": "ionic cordova run browser -l",
     "ionic-run-in-browser-dev": "ionic cordova run browser"
