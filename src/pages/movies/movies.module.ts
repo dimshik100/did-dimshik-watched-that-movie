@@ -3,10 +3,11 @@ import { APP_CONFIG, APP_DI_CONFIG } from '../../providers/config/config';
 import { MovieDetailPage } from './movie-detail/movie-detail';
 import { MoviesPage } from './movies';
 
-import {  IonicPageModule } from 'ionic-angular';
-import {  HttpModule } from '@angular/http';
+import { IonicPageModule } from 'ionic-angular';
+import { HttpModule } from '@angular/http';
 
 import { NgModule } from '@angular/core';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   declarations: [
@@ -15,18 +16,19 @@ import { NgModule } from '@angular/core';
   ],
   imports: [
     IonicPageModule.forChild(MoviesPage),
-    HttpModule
+    HttpModule,
+    ComponentsModule
   ],
   entryComponents: [
     MoviesPage,
     MovieDetailPage
   ],
   providers: [
-    { provide: APP_CONFIG, useValue: APP_DI_CONFIG},
+    { provide: APP_CONFIG, useValue: APP_DI_CONFIG },
     MovieProvider
   ]
 })
-export class MoviesModule {}
+export class MoviesModule { }
 
 
 //provide: BASE_URL, useValue: 'http://localhost'}

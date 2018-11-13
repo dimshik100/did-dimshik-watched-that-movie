@@ -13,7 +13,8 @@
     "ionic:serve": "ionic-app-scripts serve",
     "ionic-serve-in-browser-dev": "ionic cordova run browser -l",
     "ionic-run-in-browser-dev": "ionic cordova run browser",
-    "build-apk-prod": "ionic cordova build android --prod --release"
+    "build-apk-prod": "ionic cordova build android --prod --release",
+    "build-web-prod": "ionic cordova build browser --prod --release"
   },
   "dependencies": {
     "@angular/common": "4.1.3",
